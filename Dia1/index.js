@@ -49,7 +49,7 @@ mongoose.connect('mongodb+srv://eadethomas:esklavos100@retomongo.0p0fsfh.mongodb
 //     mongoose.disconnect();
 //   })
 //   .catch((err) => {
-//     console.error("Error al guardar el documento User:", err);
+//     console.error("Error al guardar el documento Profile:", err);
 //   });
 
 
@@ -71,5 +71,5 @@ credentialdoc.save()
     mongoose.disconnect();
   })
   .catch((err) => {
-    console.error("Error al guardar el documento User:", err);
+    console.error("Error al guardar el documento Credentials:", err);
   });
