@@ -120,7 +120,7 @@ function Borrarfotos(usuario){
             console.log("Error al eliminar la foto");
         });
 }
-//Eliminar fotos
+//Eliminar fotos de usuario Rosalia
 // let photoejemplo = {
 //     userName: "Rosalia",
 //   };
