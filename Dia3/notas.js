@@ -10,11 +10,7 @@ mongoose.connect('mongodb+srv://eadethomas:esklavos100@retomongo.0p0fsfh.mongodb
 
 
 
-
-                  
-// PROFESORES
-
-
+// AÑADIR PROFESORES
 const teacher1 = {
     teacher_first_name: "Dani",
     teacher_last_name: "Codenotch"
@@ -40,9 +36,21 @@ const teacher5 = {
     teacher_last_name: "Sparrow"
 };
 
+// Teachers.insertMany([teacher1,teacher2,teacher3,teacher4,teacher5])
+//     .then((data) => {
+//         console.log(`Se han añadido ${data.length} teachers.`);
+//         console.log(data);
+//         mongoose.disconnect();
+//     })
+//     .catch((err) => {
+//         console.log("Error: " + err);
+//     });
 
 
-// NOTAS
+
+
+
+// AÑADIR NOTAS
 
 
 const mark1 = {
@@ -52,7 +60,7 @@ const mark1 = {
     student_last_name: "Eade",
     group_name: "Primero",
     subject_name: "Programacion",
-    teachers: [teacher1, teacher2]
+    teachers: [teacher1, teacher2, teacher3]
 };
 
 const mark2 = {
@@ -72,7 +80,7 @@ const mark3 = {
     student_last_name: "Perez",
     group_name: "Segundo",
     subject_name: "Educacion Fisica",
-    teachers: [teacher5]
+    teachers: [teacher5, teacher2, teacher3]
 };
 
 const mark4 = {
@@ -82,7 +90,7 @@ const mark4 = {
     student_last_name: "Gonzalez",
     group_name: "Tercero",
     subject_name: "Lengua",
-    teachers: [teacher4, teacher1]
+    teachers: [teacher4, teacher1, teacher2]
 };
 
 const mark5 = {
@@ -92,7 +100,7 @@ const mark5 = {
     student_last_name: "Gomez",
     group_name: "primero",
     subject_name: "Mates",
-    teachers: [teacher4, teacher5]
+    teachers: [teacher4, teacher5, teacher1]
 };
 
 const mark6 = {
@@ -102,7 +110,7 @@ const mark6 = {
     student_last_name: "Lopez",
     group_name: "segundo",
     subject_name: "Frances",
-    teachers: [teacher2, teacher3]
+    teachers: [teacher2, teacher3, teacher4]
 };
 
 const mark7 = {
@@ -112,7 +120,7 @@ const mark7 = {
     student_last_name: "Hermida",
     group_name: "tercero",
     subject_name: "Quimica",
-    teachers: [teacher3, teacher2]
+    teachers: [teacher3, teacher2, teacher3]
 };
 
 const mark8 = {
@@ -122,7 +130,7 @@ const mark8 = {
     student_last_name: "Gomez",
     group_name: "tercero",
     subject_name: "Historia",
-    teachers: [teacher1, teacher5]
+    teachers: [teacher1, teacher5, teacher1]
 };
 
 const mark9 = {
@@ -132,7 +140,7 @@ const mark9 = {
     student_last_name: "Garcia",
     group_name: "primero",
     subject_name: "Historia",
-    teachers: [teacher1, teacher3]
+    teachers: [teacher1, teacher3, teacher2]
 };
 
 const mark10 = {
@@ -144,19 +152,6 @@ const mark10 = {
     subject_name: "Educacion Fisica",
     teachers: [teacher5]
 };
-
-
-//  AÑADIR PROFESORES
-
-// Teachers.insertMany([teacher1,teacher2,teacher3,teacher4,teacher5])
-//     .then((data) => {
-//         console.log(`Se han añadido ${data.length} teachers.`);
-//         console.log(data);
-//         mongoose.disconnect();
-//     })
-//     .catch((err) => {
-//         console.log("Error: " + err);
-//     });
 
 
 // AÑADIR NOTAS 
@@ -259,15 +254,15 @@ const mark10 = {
 // Numero total de alumnos por grupo ordenados por grupo en orden inverso al alfabeto
 
 
-// Marks.aggregate([{$group: {_id: "$group_name", NumeroTotalAlumnos: {$sum: 1}}},
-//                 {$sort: {_id: -1}}])
-//                 .then((data) => {
-//                     console.log(data);
-//                     mongoose.disconnect();
-//                 })
-//                 .catch((err) => {
-//                     console.log("Error: " + err);
-//                 });
+Marks.aggregate([{$group: {_id: "$group_name", NumeroTotalAlumnos: {$sum: 1}}},
+                {$sort: {_id: -1}}])
+                .then((data) => {
+                    console.log(data);
+                    mongoose.disconnect();
+                })
+                .catch((err) => {
+                    console.log("Error: " + err);
+                });
 
 
 
