@@ -150,7 +150,7 @@ const mark10 = {
 };
 
 
-// ÑADIR PROFESORES
+// AÑADIR PROFESORES
 
 // Teachers.insertMany([teacher1,teacher2,teacher3,teacher4,teacher5])
 //     .then((data) => {
@@ -161,6 +161,9 @@ const mark10 = {
 //     .catch((err) => {
 //         console.log("Error: " + err);
 //     });
+
+
+
 // AÑADIR NOTAS 
 
 
