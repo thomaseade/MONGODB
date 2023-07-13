@@ -16,30 +16,15 @@ mongoose.connect('mongodb+srv://eadethomas:esklavos100@retomongo.0p0fsfh.mongodb
 //  PROFESORES
 
 
-const teacher1 = {
-    teacher_first_name: "Dani",
-    teacher_last_name: "Codenotch"
-};
+const teacher1 = {teacher_first_name: "Dani",teacher_last_name: "Codenotch"};
 
-const teacher2 = {
-    teacher_first_name: "Menchu",
-    teacher_last_name: "Codenotch"
-};
+const teacher2 = {teacher_first_name: "Menchu",teacher_last_name: "Codenotch"};
 
-const teacher3 = {
-    teacher_first_name: "Joselin",
-    teacher_last_name: "Rodriguez"
-};
+const teacher3 = {teacher_first_name: "Joselin",teacher_last_name: "Rodriguez"};
 
-const teacher4 = {
-    teacher_first_name: "Martin",
-    teacher_last_name: "Osborne"
-};
+const teacher4 = {teacher_first_name: "Martin",teacher_last_name: "Osborne"};
 
-const teacher5 = {
-    teacher_first_name: "Jack",
-    teacher_last_name: "Sparrow"
-};
+const teacher5 = {teacher_first_name: "Jack",teacher_last_name: "Sparrow"};
 
 
 
