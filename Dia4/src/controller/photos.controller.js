@@ -1,121 +1,148 @@
 const Photo = require("../model/PhotoSchema");
 
 
-const getPhotosByUser = async (req, res) => {
-    try {
-      let { user } = req.params;
-      let photos = await Photo.find({ userName: user });
-  
+
+// Obtener las fotos de un usuario
+
+const getPhotosByUser = (req, res) => {
+  let { user } = req.params;
+
+  Photo.find({ userName: user })
+    .then((photos) => {
       if (photos.length > 0) {
         res.json({
           error: false,
-          mensaje: "Fotos disponibles",
+          mensaje: "Fotos del usuario:",
           data: photos,
         });
       } else {
         res.json({
           error: true,
-          mensaje: "No hay fotos",
+          mensaje: "No se encuentran fotos",
           data: null,
         });
       }
-    } catch (error) {
+    })
+    .catch((error) => {
       console.error(error);
-    } 
-  };
+      res.status(500).json({
+        error: true,
+        mensaje: "Error al buscar fotos del usuario",
+        data: null,
+      });
+    });
+};
 
 
+// añadir una foto 
 
-const putPhoto = async (req, res) => {
+
+const putPhoto = (req, res) => {
   let { userName, url, title, description } = req.body;
-  try {
-    let newPhoto = new Photo({ userName, url, title, description });
-    await newPhoto.save();
 
-    res.json({
-      error: false,
-      mensaje: "Foto subida correctamente",
-      data: null,
+  let newPhoto = new Photo({ userName, url, title, description });
+
+  newPhoto
+    .save()
+    .then(() => {
+      res.json({
+        error: false,
+        mensaje: "Foto añadida",
+        data: null,
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).json({
+        error: true,
+        mensaje: "Error al añadir  foto",
+        data: null,
+      });
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      error: true,
-      mensaje: "Error al subir la foto",
-      data: null,
-    });
-  }
 };
 
 
 
-const updateDescription = async (req, res) => {
+// actualizar la descripcion de una foto  segun su titulo 
+
+
+const updateDescription = (req, res) => {
   let { title, description } = req.body;
-  try {
-    await Photo.findOneAndUpdate({ title }, { description });
 
-    res.json({
-      error: false,
-      mensaje: "Descripción de la foto actualizada correctamente",
-      data: null,
+  Photo.findOneAndUpdate({ title }, { description })
+    .then(() => {
+      res.json({
+        error: false,
+        mensaje: "Descripción de la foto actualizada ",
+        data: null,
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).json({
+        error: true,
+        mensaje: "Error al actualizarla la foto",
+        data: null,
+      });
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      error: true,
-      mensaje: "Error al modificar la descripción de la foto",
-      data: null,
-    });
-  }
 };
 
-const deletePhoto = async (req, res) => {
-    const { user, title } = req.body;
-    try {
-      let deletedPhoto = await Photo.findOneAndDelete({ userName: user, title });
-  
+
+// borrar una foto de un usuario segun el titulo y el nombre de usuario
+
+const deletePhoto = (req, res) => {
+  const { user, title } = req.body;
+
+  Photo.findOneAndDelete({ userName: user, title })
+    .then((deletedPhoto) => {
       if (deletedPhoto) {
         res.json({
           error: false,
-          mensaje: "Foto eliminada correctamente",
+          mensaje: "Foto borrada ",
           data: null,
         });
       } else {
         res.status(404).json({
           error: true,
-          mensaje: "No se encontró la foto",
+          mensaje: "Error al buscar la foto",
           data: null,
-        }); 
-      } 
-    } catch (error) {
+        });
+      }
+    })
+    .catch((error) => {
       console.error(error);
       res.status(500).json({
         error: true,
-        mensaje: "Error al eliminar la foto",
+        mensaje: "Error al borrar la foto ",
         data: null,
       });
-    }
-  };
+    });
+};
 
 
-  const deleteAllPhotosByUser = async (req, res) => {
-    const { user } = req.params;
-    try {
-      await Photo.deleteMany({ userName: user }); 
-  
+
+//borrar todas las fotos de un usuario 
+
+
+const deleteAllPhotosByUser = (req, res) => {
+  const { user } = req.params;
+
+  Photo.deleteMany({ userName: user })
+    .then(() => {
       res.json({
         error: false,
-        mensaje: "Todas las fotos del usuario han sido eliminadas",
+        mensaje: "Fotos borradas",
         data: null,
       });
-    } catch (error) {
+    })
+    .catch((error) => {
       console.error(error);
       res.status(500).json({
         error: true,
-        mensaje: "Error al eliminar todas las fotos del usuario",
+        mensaje: "Error al borrar las fotos",
         data: null,
       });
-    }
-  };
+    });
+};
 
 module.exports = { getPhotosByUser, putPhoto, updateDescription, deletePhoto, deleteAllPhotosByUser };  
