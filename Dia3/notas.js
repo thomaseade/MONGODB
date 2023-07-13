@@ -1,28 +1,12 @@
 
 const mongoose = require("mongoose");
-
-const TeacherSchema = new mongoose.Schema({
-    teacher_first_name: String,
-    teacher_last_name: String
-});
-
-const MarksSchema = new mongoose.Schema({
-    date: Date,
-    mark: Number,
-    student_first_name: String,
-    student_last_name: String,
-    group_name: String,
-    subject_name: String,
-    teachers: [TeacherSchema]
-});
-
+const { Teachers, Marks } = require("./Schemas");
 
 mongoose.connect('mongodb+srv://eadethomas:esklavos100@retomongo.0p0fsfh.mongodb.net/Codenotch', 
                   {useNewUrlParser: false, useUnifiedTopology: false});
 
 
-let Teachers = mongoose.model('Teachers', TeacherSchema);
-let Marks = mongoose.model('Marks', MarksSchema);
+
 
 
 
@@ -63,7 +47,12 @@ const teacher5 = {
 //     });
 
 
+
+
+
 // AÑADIR NOTAS
+
+
 const mark1 = {
     date: "2020-12-12",
     mark: 10,
@@ -265,7 +254,7 @@ const mark10 = {
 // Numero total de alumnos por grupo ordenados por grupo en orden inverso al alfabeto
 
 
-// Marks.aggregate([{$group: {_id: "$group_name", totalAlumnos: {$sum: 1}}},
+// Marks.aggregate([{$group: {_id: "$group_name", NumeroTotalAlumnos: {$sum: 1}}},
 //                 {$sort: {_id: -1}}])
 //                 .then((data) => {
 //                     console.log(data);
@@ -283,17 +272,17 @@ const mark10 = {
 // Obtener TOP 5 de las asignaturas con media mayor que 5
 
 
-// Marks.aggregate([{$group: {_id: "$subject_name", Media: {$avg: "$mark"}}},
-//                 {$match: {Media: {$gt: 5}}},
-//                 {$sort: {Media: -1}},
-//                 {$limit: 5}])
-//                 .then((data) => {
-//                     console.log(data);
-//                     mongoose.disconnect();
-//                 })
-//                 .catch((err) => {
+// Marks.aggregate([{$group: {_id: "$subject_name", Top5Media: {$avg: "$mark"}}},
+//             {$match: {Top5Media: {$gt: 5}}},
+//             {$sort: {Top5Media: -1}},
+//             {$limit: 5}])
+//               .then((data) => {
+//                  console.log(data);
+//                  mongoose.disconnect();
+//              })
+//               .catch((err) => {
 //                     console.log("Error: " + err);
-//                 });
+//               });
 
 
 
