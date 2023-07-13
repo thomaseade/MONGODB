@@ -28,7 +28,7 @@ const getPhotosByUser = async (req, res) => {
 
 
 
-const uploadPhoto = async (req, res) => {
+const putPhoto = async (req, res) => {
   let { userName, url, title, description } = req.body;
   try {
     let newPhoto = new Photo({ userName, url, title, description });
@@ -53,7 +53,7 @@ const uploadPhoto = async (req, res) => {
 
 
 
-const updatePhotoDescription = async (req, res) => {
+const updateDescription = async (req, res) => {
   let { title, description } = req.body;
   try {
     await Photo.findOneAndUpdate({ title }, { description });
@@ -129,4 +129,4 @@ const deletePhoto = async (req, res) => {
     }
   };
 
-module.exports = { getPhotosByUser, uploadPhoto, updatePhotoDescription, deletePhoto, deleteAllPhotosByUser }; 
+module.exports = { getPhotosByUser, putPhoto, updateDescription, deletePhoto, deleteAllPhotosByUser };  
