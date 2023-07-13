@@ -10,7 +10,11 @@ mongoose.connect('mongodb+srv://eadethomas:esklavos100@retomongo.0p0fsfh.mongodb
 
 
 
-// AÑADIR PROFESORES
+
+                  
+// PROFESORES
+
+
 const teacher1 = {
     teacher_first_name: "Dani",
     teacher_last_name: "Codenotch"
@@ -36,21 +40,9 @@ const teacher5 = {
     teacher_last_name: "Sparrow"
 };
 
-// Teachers.insertMany([teacher1,teacher2,teacher3,teacher4,teacher5])
-//     .then((data) => {
-//         console.log(`Se han añadido ${data.length} teachers.`);
-//         console.log(data);
-//         mongoose.disconnect();
-//     })
-//     .catch((err) => {
-//         console.log("Error: " + err);
-//     });
 
 
-
-
-
-// AÑADIR NOTAS
+// NOTAS
 
 
 const mark1 = {
@@ -152,6 +144,19 @@ const mark10 = {
     subject_name: "Educacion Fisica",
     teachers: [teacher5]
 };
+
+
+//  AÑADIR PROFESORES
+
+// Teachers.insertMany([teacher1,teacher2,teacher3,teacher4,teacher5])
+//     .then((data) => {
+//         console.log(`Se han añadido ${data.length} teachers.`);
+//         console.log(data);
+//         mongoose.disconnect();
+//     })
+//     .catch((err) => {
+//         console.log("Error: " + err);
+//     });
 
 
 // AÑADIR NOTAS 
