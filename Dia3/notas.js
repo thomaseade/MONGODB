@@ -228,21 +228,24 @@ const mark10 = {
 // Nombre y apellidos de todos los profesores con repetidos
 
 
-// Marks.aggregate([{$project: {_id: 0, teachers: 1}}])
-//                 .then((data) => {
-//                     console.log('[');
-//                     data.forEach((teachers) => {
-//                         teachers.teachers.forEach((teacher)=>{
-//                             console.log(`  { teacher_first_name: '${teacher.teacher_first_name}', teacher_last_name: '${teacher.teacher_last_name}'}`);
-//                         })
-//                     })
-//                     console.log(']');
-//                     mongoose.disconnect();
-//                 })
-//                 .catch((err) => {
-//                     console.log("Error: " + err);
-//                 });
 
+// Marks.aggregate([
+//     { $unwind: "$teachers" },
+//     {
+//       $project: {
+//         _id: 0,
+//         teacher_first_name: "$teachers.teacher_first_name",
+//         teacher_last_name: "$teachers.teacher_last_name"
+//       }
+//     }
+//   ])
+//     .then((data) => {
+//       console.log(data);
+//       mongoose.disconnect();
+//     })
+//     .catch((err) => {
+//       console.log("Error: " + err);
+//     });
 
 
 
@@ -298,3 +301,8 @@ const mark10 = {
 //                 .catch((err) => {
 //                     console.log("Error: " + err);
 //                 });
+
+
+
+
+
