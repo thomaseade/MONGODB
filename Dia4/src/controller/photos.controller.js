@@ -9,14 +9,12 @@ const getPhotosByUser = async (req, res) => {
       if (photos.length > 0) {
         res.json({
           error: false,
-          codigo: 200,
           mensaje: "Fotos disponibles",
           data: photos,
         });
       } else {
         res.json({
           error: true,
-          codigo: 200,
           mensaje: "No hay fotos",
           data: null,
         });
@@ -36,7 +34,6 @@ const putPhoto = async (req, res) => {
 
     res.json({
       error: false,
-      codigo: 200,
       mensaje: "Foto subida correctamente",
       data: null,
     });
@@ -44,7 +41,6 @@ const putPhoto = async (req, res) => {
     console.error(error);
     res.status(500).json({
       error: true,
-      codigo: 500,
       mensaje: "Error al subir la foto",
       data: null,
     });
@@ -60,7 +56,6 @@ const updateDescription = async (req, res) => {
 
     res.json({
       error: false,
-      codigo: 200,
       mensaje: "Descripción de la foto actualizada correctamente",
       data: null,
     });
@@ -68,7 +63,6 @@ const updateDescription = async (req, res) => {
     console.error(error);
     res.status(500).json({
       error: true,
-      codigo: 500,
       mensaje: "Error al modificar la descripción de la foto",
       data: null,
     });
@@ -83,14 +77,12 @@ const deletePhoto = async (req, res) => {
       if (deletedPhoto) {
         res.json({
           error: false,
-          codigo: 200,
           mensaje: "Foto eliminada correctamente",
           data: null,
         });
       } else {
         res.status(404).json({
           error: true,
-          codigo: 404,
           mensaje: "No se encontró la foto",
           data: null,
         }); 
@@ -99,7 +91,6 @@ const deletePhoto = async (req, res) => {
       console.error(error);
       res.status(500).json({
         error: true,
-        codigo: 500,
         mensaje: "Error al eliminar la foto",
         data: null,
       });
@@ -114,7 +105,6 @@ const deletePhoto = async (req, res) => {
   
       res.json({
         error: false,
-        codigo: 200,
         mensaje: "Todas las fotos del usuario han sido eliminadas",
         data: null,
       });
@@ -122,7 +112,6 @@ const deletePhoto = async (req, res) => {
       console.error(error);
       res.status(500).json({
         error: true,
-        codigo: 500,
         mensaje: "Error al eliminar todas las fotos del usuario",
         data: null,
       });
