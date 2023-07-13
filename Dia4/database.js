@@ -1,10 +1,11 @@
 let mongoose = require("mongoose");
-const { db } = require("../../Dia 2/photo");
 
 
+
+// CONEXION CON LA BASE DE DATOS
 
 mongoose.connect('mongodb+srv://eadethomas:esklavos100@retomongo.0p0fsfh.mongodb.net/Codenotch', 
-                  {useNewUrlParser: false, useUnifiedTopology: false})
+                  {useNewUrlParser: true, useUnifiedTopology: true})
 
 .then((db) => {
     console.log("database connected on " + db.connection.host)
