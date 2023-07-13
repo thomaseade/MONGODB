@@ -254,15 +254,15 @@ const mark10 = {
 // Numero total de alumnos por grupo ordenados por grupo en orden inverso al alfabeto
 
 
-Marks.aggregate([{$group: {_id: "$group_name", NumeroTotalAlumnos: {$sum: 1}}},
-                {$sort: {_id: -1}}])
-                .then((data) => {
-                    console.log(data);
-                    mongoose.disconnect();
-                })
-                .catch((err) => {
-                    console.log("Error: " + err);
-                });
+// Marks.aggregate([{$group: {_id: "$group_name", NumeroTotalAlumnos: {$sum: 1}}},
+//                 {$sort: {_id: -1}}])
+//                 .then((data) => {
+//                     console.log(data);
+//                     mongoose.disconnect();
+//                 })
+//                 .catch((err) => {
+//                     console.log("Error: " + err);
+//                 });
 
 
 
